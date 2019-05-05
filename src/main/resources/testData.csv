@@ -1,0 +1,6 @@
+testNum,isPrime,isHappy,isHappyPrime
+2,true,false,false
+19,true,true,true
+167,true,true,true
+123,false,false,false
+110,false,false,false
