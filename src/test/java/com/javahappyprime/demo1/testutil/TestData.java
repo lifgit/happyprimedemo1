@@ -1,4 +1,4 @@
-package com.javahappyprime.demo1.testutils;
+package com.javahappyprime.demo1.testutil;
 
 public class TestData {
     private int testNum;

@@ -1,9 +1,9 @@
-package com.javahappyprime.demo1.utilities;
+package com.javahappyprime.demo1.util;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class NumUtil {
+public class NumUtils {
     public static boolean isHappy(int num){
         if (num < 1){
             return false;
@@ -25,7 +25,7 @@ public class NumUtil {
     }
 
     public static boolean isPrime(int num) {
-        if (num <1 ) return false;
+        if (num <= 1 ) return false;
 
         // check from 2 to num-1
         for ( int i = 2; i < num; i++) {

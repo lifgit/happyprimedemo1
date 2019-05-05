@@ -1,8 +1,8 @@
-package com.javahappyprime.demo1;
+package com.javahappyprime.demo1.util_test;
 
-import com.javahappyprime.demo1.testutils.DataLoader;
-import com.javahappyprime.demo1.testutils.TestData;
-import com.javahappyprime.demo1.utilities.NumUtil;
+import com.javahappyprime.demo1.util.NumUtils;
+import com.javahappyprime.demo1.testutil.DataLoader;
+import com.javahappyprime.demo1.testutil.TestData;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,14 +34,14 @@ public class NumUtilTest {
     @Test
     public void testPrimeNumbers() {
         System.out.println("Test1");
-        assertEquals(true, NumUtil.isPrime(137));
+        assertEquals(true, NumUtils.isPrime(137));
 
     }
 
     @Test
     public void testHappyNumbers() {
         System.out.println("Test2");
-        assertEquals(true, NumUtil.isHappy(167));
+        assertEquals(true, NumUtils.isHappy(167));
     }
 
     @Test
@@ -49,20 +49,20 @@ public class NumUtilTest {
         System.out.println("Test3-start");
         for ( TestData tData : testDataList) {
             System.out.println("Test3:" + tData.getTestNum());
-            assertEquals(tData.getIsHappy(), NumUtil.isHappy(tData.getTestNum()));
-            assertEquals(tData.getIsPrime(), NumUtil.isPrime(tData.getTestNum()));
+            assertEquals(tData.getIsHappy(), NumUtils.isHappy(tData.getTestNum()));
+            assertEquals(tData.getIsPrime(), NumUtils.isPrime(tData.getTestNum()));
         }
         System.out.println("Test3-end");
     }
 
     @Test
     public void shouldReturnCorrectIsHappyPositive() {
-        assertThat(NumUtil.isHappy(1), is(true));
-        assertThat(NumUtil.isHappy(100), is(true));
-        assertThat(NumUtil.isHappy(7), is(true));
-        assertThat(NumUtil.isHappy(167),is(true));
-        assertThat(NumUtil.isHappy(2), is(false));
-        assertThat(NumUtil.isHappy(20000), is(false));
-        assertThat(NumUtil.isHappy(1234567890), is(false));
+        assertThat(NumUtils.isHappy(1), is(true));
+        assertThat(NumUtils.isHappy(100), is(true));
+        assertThat(NumUtils.isHappy(7), is(true));
+        assertThat(NumUtils.isHappy(167),is(true));
+        assertThat(NumUtils.isHappy(2), is(false));
+        assertThat(NumUtils.isHappy(20000), is(false));
+        assertThat(NumUtils.isHappy(1234567890), is(false));
     }
 }
