@@ -4,28 +4,25 @@ import com.javahappyprime.demo1.utilities.NumUtil;
 import com.javahappyprime.demo1.services.RandomNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RequestMapping("/v1/checkHappyPrime")
 public class Demo1Controller {
 
     @Autowired
     RandomNumberService randomNumberService;
 
-    @RequestMapping("/checkHappyPrime")
+    @RequestMapping(value = {"", "/{testNum}"}, method = RequestMethod.GET )
     @ResponseBody
-    public Result checkHappyPrime(@RequestParam(name="testNum", required=false, defaultValue="-1") Integer testNum) {
-        int number = testNum;
-        if (number == -1) {
-            number = randomNumberService.getRandomNumber();
+    public Result checkHappyPrime(@PathVariable(name="testNum", required=false) Integer testNum) {
+        if (testNum == null) {
+            testNum = randomNumberService.getRandomNumber();
         }
-        boolean isHappy = NumUtil.isHappy(number);
-        boolean isPrime = NumUtil.isPrime(number);
+        boolean isHappy = NumUtil.isHappy(testNum);
+        boolean isPrime = NumUtil.isPrime(testNum);
 
-        return new Result(number, isHappy&&isPrime);
+        return new Result(testNum, isHappy&&isPrime);
     }
 }
