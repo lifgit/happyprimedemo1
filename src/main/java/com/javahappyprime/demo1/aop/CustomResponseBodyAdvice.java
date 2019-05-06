@@ -1,6 +1,6 @@
 package com.javahappyprime.demo1.aop;
 
-import com.javahappyprime.demo1.exception.BizarreException;
+import com.javahappyprime.demo1.exception.HappyPrimeException;
 import com.javahappyprime.demo1.exception.ErrorCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,8 +52,8 @@ public class CustomResponseBodyAdvice implements ResponseBodyAdvice {
     public CustomResponse handleAllException(HttpServletRequest request, Exception ex) {
         LOGGER.error("Something wrong,", ex);
         String errorCode = ErrorCode.UNKNOWN.toString();
-        if (ex instanceof BizarreException) {
-            errorCode = ((BizarreException)ex).getErrorCode().toString();
+        if (ex instanceof HappyPrimeException) {
+            errorCode = ((HappyPrimeException)ex).getErrorCode().toString();
         } else if (ex instanceof HttpClientErrorException) {
             HttpStatus httpStatus = ((HttpClientErrorException)ex).getStatusCode();
             errorCode = String.valueOf(httpStatus.value());

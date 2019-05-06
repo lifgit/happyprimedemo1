@@ -1,6 +1,6 @@
 package com.javahappyprime.demo1.service_test;
 
-import com.javahappyprime.demo1.exception.BizarreException;
+import com.javahappyprime.demo1.exception.HappyPrimeException;
 import com.javahappyprime.demo1.service.RemoteService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,7 +47,7 @@ public class RemoteServiceTest {
         try {
             remoteService.getRandomNumber();
         } catch (Exception ex) {
-            assertTrue(ex instanceof BizarreException);
+            assertTrue(ex instanceof HappyPrimeException);
         }
     }
 

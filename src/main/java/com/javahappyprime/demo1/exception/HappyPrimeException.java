@@ -1,10 +1,10 @@
 package com.javahappyprime.demo1.exception;
 
-public class BizarreException extends RuntimeException {
+public class HappyPrimeException extends RuntimeException {
 
     private ErrorCode errorCode;
 
-    public BizarreException(ErrorCode errorCode, String errorMessage) {
+    public HappyPrimeException(ErrorCode errorCode, String errorMessage) {
         super(errorMessage);
         this.errorCode = errorCode;
     }

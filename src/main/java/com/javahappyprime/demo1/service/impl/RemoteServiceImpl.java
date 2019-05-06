@@ -1,6 +1,6 @@
 package com.javahappyprime.demo1.service.impl;
 
-import com.javahappyprime.demo1.exception.BizarreException;
+import com.javahappyprime.demo1.exception.HappyPrimeException;
 import com.javahappyprime.demo1.exception.ErrorCode;
 import com.javahappyprime.demo1.service.RemoteService;
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ public class RemoteServiceImpl implements RemoteService {
         } catch (Exception ex) {
             LOGGER.error("Get random number failed, cause by:", ex);
             String errorMessage = "Get random number failed, cause by: %s";
-            throw new BizarreException(ErrorCode.RANDOM_NUMBER_BAD_REQUEST, String.format(errorMessage, ex.getMessage()));
+            throw new HappyPrimeException(ErrorCode.RANDOM_NUMBER_BAD_REQUEST, String.format(errorMessage, ex.getMessage()));
         }
     }
 }

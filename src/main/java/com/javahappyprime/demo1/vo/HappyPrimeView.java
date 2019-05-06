@@ -19,6 +19,6 @@ public class HappyPrimeView {
     }
 
     public void setHappyPrime(boolean happyPrime) {
-        this.isHappyPrime = happyPrime;
+        isHappyPrime = happyPrime;
     }
 }

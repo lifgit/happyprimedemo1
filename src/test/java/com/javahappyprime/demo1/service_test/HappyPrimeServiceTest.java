@@ -1,6 +1,6 @@
 package com.javahappyprime.demo1.service_test;
 
-import com.javahappyprime.demo1.exception.BizarreException;
+import com.javahappyprime.demo1.exception.HappyPrimeException;
 import com.javahappyprime.demo1.exception.ErrorCode;
 import com.javahappyprime.demo1.pojo.HappyPrimePojo;
 import com.javahappyprime.demo1.service.HappyPrimeService;
@@ -59,9 +59,9 @@ public class HappyPrimeServiceTest {
         try {
             happyPrimeService.checkHappyPrime(null);
         } catch (Exception ex) {
-            assertTrue(ex instanceof BizarreException);
-            BizarreException actualEx = (BizarreException) ex;
-            BizarreException expectEx = new BizarreException(ErrorCode.INVALID_NUMBER, "Got null for random number.");
+            assertTrue(ex instanceof HappyPrimeException);
+            HappyPrimeException actualEx = (HappyPrimeException) ex;
+            HappyPrimeException expectEx = new HappyPrimeException(ErrorCode.INVALID_NUMBER, "Got null for random number.");
             assertEquals(expectEx.getErrorCode(), actualEx.getErrorCode());
             assertEquals(expectEx.getMessage(), actualEx.getMessage());
         }

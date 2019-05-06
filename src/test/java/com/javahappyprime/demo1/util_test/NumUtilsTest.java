@@ -9,6 +9,9 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,20 +23,23 @@ import java.util.List;
 public class NumUtilsTest {
     public static List<TestData> testDataList;
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(NumUtilsTest.class);
+
     @BeforeClass
     public static void beforeClass() {
-        System.out.println("before class");
+        LOGGER.info("before class");
         DataLoader dataLoader = new DataLoader();
         testDataList = dataLoader.loadObjectList(TestData.class, "testData.csv");
+        String formatter = "tdata:%s, isPrime:%s, isHappy:%s";
         for (TestData tData : testDataList) {
-            System.out.println( "tdata" + tData.getTestNum() + tData.getIsPrime() + tData.getIsHappy());
+            LOGGER.info(String.format(formatter, tData.getTestNum(), tData.getIsPrime(), tData.getIsHappy()));
         }
 
     }
 
     @Test
     public void testPrimeNumbers() {
-        System.out.println("Test1");
+        LOGGER.info("Test1");
         assertEquals(true, NumUtils.isPrime(137));
         assertEquals(false, NumUtils.isPrime(138));
 
@@ -41,14 +47,14 @@ public class NumUtilsTest {
 
     @Test
     public void testHappyNumbers() {
-        System.out.println("Test2");
+        LOGGER.info("Test2");
         assertEquals(true, NumUtils.isHappy(167));
         assertEquals(false, NumUtils.isHappy(168));
     }
 
     @Test
     public void testCSVData() {
-        System.out.println("Test3");
+        LOGGER.info("Test3");
         for ( TestData tData : testDataList) {
             assertEquals(tData.getIsHappy(), NumUtils.isHappy(tData.getTestNum()));
             assertEquals(tData.getIsPrime(), NumUtils.isPrime(tData.getTestNum()));
@@ -57,7 +63,7 @@ public class NumUtilsTest {
 
     @Test
     public void shouldReturnCorrectIsHappyPositive() {
-        System.out.println("Test4");
+        LOGGER.info("Test4");
         assertThat(NumUtils.isHappy(1), is(true));
         assertThat(NumUtils.isHappy(100), is(true));
         assertThat(NumUtils.isHappy(21), is(false));
@@ -67,7 +73,7 @@ public class NumUtilsTest {
 
     @Test
     public void shouldReturnCorrectIsHappyNegative() {
-        System.out.println("Test5");
+        LOGGER.info("Test5");
         assertThat(NumUtils.isHappy(-1), is(false));
         assertThat(NumUtils.isHappy(-100), is(false));
         assertThat(NumUtils.isHappy(-21), is(false));
@@ -77,7 +83,7 @@ public class NumUtilsTest {
 
     @Test
     public void shouldReturnCorrectIsPrimePositive() {
-        System.out.println("Test6");
+        LOGGER.info("Test6");
         assertThat(NumUtils.isPrime(1), is(false));
         assertThat(NumUtils.isPrime(17), is(true));
         assertThat(NumUtils.isPrime(21), is(false));
@@ -87,7 +93,7 @@ public class NumUtilsTest {
 
     @Test
     public void shouldReturnCorrectIsPrimeNegative() {
-        System.out.println("Test7");
+        LOGGER.info("Test7");
         assertThat(NumUtils.isPrime(-1), is(false));
         assertThat(NumUtils.isPrime(-100), is(false));
         assertThat(NumUtils.isPrime(-21), is(false));
@@ -97,13 +103,13 @@ public class NumUtilsTest {
 
     @Test
     public void shouldReturnCorrectIsHappyZero() {
-        System.out.println("Test8");
+        LOGGER.info("Test8");
         assertThat(NumUtils.isHappy(0), is(false));
     }
 
     @Test
     public void shouldReturnCorrectIsPrimeZero() {
-        System.out.println("Test9");
+        LOGGER.info("Test9");
         assertThat(NumUtils.isPrime(0), is(false));
     }
 }

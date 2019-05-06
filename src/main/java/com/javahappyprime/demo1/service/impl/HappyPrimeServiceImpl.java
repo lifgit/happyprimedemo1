@@ -1,6 +1,6 @@
 package com.javahappyprime.demo1.service.impl;
 
-import com.javahappyprime.demo1.exception.BizarreException;
+import com.javahappyprime.demo1.exception.HappyPrimeException;
 import com.javahappyprime.demo1.exception.ErrorCode;
 import com.javahappyprime.demo1.pojo.HappyPrimePojo;
 import com.javahappyprime.demo1.service.HappyPrimeService;
@@ -24,7 +24,7 @@ public class HappyPrimeServiceImpl implements HappyPrimeService {
             testNum = remoteService.getRandomNumber();
             if (testNum == null) {
                 LOGGER.error("Got null for random number.");
-                throw new BizarreException(ErrorCode.INVALID_NUMBER, "Got null for random number.");
+                throw new HappyPrimeException(ErrorCode.INVALID_NUMBER, "Got null for random number.");
             }
         }
 
